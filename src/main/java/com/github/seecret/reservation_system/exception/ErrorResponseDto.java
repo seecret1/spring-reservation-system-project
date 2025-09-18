@@ -1,4 +1,4 @@
-package com.github.seecret.reservation_system;
+package com.github.seecret.reservation_system.exception;
 
 import java.time.LocalDateTime;
 

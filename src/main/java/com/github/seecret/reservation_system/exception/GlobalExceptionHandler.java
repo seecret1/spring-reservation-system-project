@@ -1,4 +1,4 @@
-package com.github.seecret.reservation_system;
+package com.github.seecret.reservation_system.exception;
 
 import jakarta.persistence.EntityNotFoundException;
 import org.slf4j.LoggerFactory;
@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import java.time.LocalDateTime;
-import java.util.Locale;
 
 @ControllerAdvice
 public class GlobalExceptionHandler {
