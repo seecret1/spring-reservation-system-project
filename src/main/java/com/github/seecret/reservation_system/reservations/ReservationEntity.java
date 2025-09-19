@@ -1,4 +1,4 @@
-package com.github.seecret.reservation_system;
+package com.github.seecret.reservation_system.reservations;
 
 import jakarta.persistence.*;
 
@@ -38,9 +38,7 @@ public class ReservationEntity {
         this.status = status;
     }
 
-    public ReservationEntity() {
-
-    }
+    public ReservationEntity() { }
 
     public void setId(Long id) {
         this.id = id;

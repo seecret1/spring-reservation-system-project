@@ -1,10 +1,10 @@
-package com.github.seecret.reservation_system;
+package com.github.seecret.reservation_system.reservations;
 
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -12,6 +12,7 @@ import java.util.List;
 public interface ReservationRepository extends JpaRepository<ReservationEntity, Long> {
 
 //    List<ReservationEntity> findAllByStatus(ReservationStatus status);
+
 //
 //    @Query(value = "select * from reservations r where r.status = :status", nativeQuery = true)
 //    List<ReservationEntity> findAllByStatus(ReservationStatus status);
@@ -33,8 +34,27 @@ public interface ReservationRepository extends JpaRepository<ReservationEntity, 
 //            );
 
     @Modifying
-    @Query("update ReservationEntity r set r.status = :status where r.id = :id")
+    @Query("UPDATE ReservationEntity r SET r.status = :status WHERE r.id = :id")
     void setStatus(
             @Param("id") Long id,
             @Param("status") ReservationStatus status);
+
+    @Query("SELECT r.id FROM ReservationEntity r " +
+            "WHERE r.roomId = :roomdId AND :startDate < r.endDate " +
+            "AND r.startDate < :endDate AND r.status = :status")
+    List<Long> findConflictReservationIds(
+            @Param("roomId") Long roomId,
+            @Param("startDate") LocalDate startDate,
+            @Param("endDate") LocalDate endDate,
+            @Param("status") ReservationStatus status
+    );
+
+    @Query("SELECT r FROM ReservationEntity r " +
+            "WHERE (:roomId IS NULL OR r.roomId = :roomId) " +
+            "AND (:userId IS NULL OR r.userId = :userId)")
+    List<ReservationEntity> searchAllByFilter(
+            @Param("roomId") Long roomId,
+            @Param("userId") Long userId,
+            Pageable pageable
+    );
 }
