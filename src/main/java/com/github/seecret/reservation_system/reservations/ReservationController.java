@@ -33,6 +33,7 @@ public class ReservationController {
     public ResponseEntity<List<Reservation>> getAllReservations(
             @RequestParam(name = "roomId", required = false) Long roomId,
             @RequestParam(name = "userId", required = false) Long userId,
+            @RequestParam(name = "status", required = false) ReservationStatus status,
             @RequestParam(name = "pageSize", required = false) Integer pageSize,
             @RequestParam(name = "pageNumber", required = false) Integer pageNumber
     ) {
@@ -40,6 +41,7 @@ public class ReservationController {
         var filter = new ReservationSearchFilter(
                 roomId,
                 userId,
+                status,
                 pageSize,
                 pageNumber
         );

@@ -40,7 +40,7 @@ public interface ReservationRepository extends JpaRepository<ReservationEntity, 
             @Param("status") ReservationStatus status);
 
     @Query("SELECT r.id FROM ReservationEntity r " +
-            "WHERE r.roomId = :roomdId AND :startDate < r.endDate " +
+            "WHERE r.roomId = :roomId AND :startDate < r.endDate " +
             "AND r.startDate < :endDate AND r.status = :status")
     List<Long> findConflictReservationIds(
             @Param("roomId") Long roomId,
@@ -51,10 +51,12 @@ public interface ReservationRepository extends JpaRepository<ReservationEntity, 
 
     @Query("SELECT r FROM ReservationEntity r " +
             "WHERE (:roomId IS NULL OR r.roomId = :roomId) " +
-            "AND (:userId IS NULL OR r.userId = :userId)")
+            "AND (:userId IS NULL OR r.userId = :userId) " +
+            "AND (:status IS NULL OR r.status = :status)")
     List<ReservationEntity> searchAllByFilter(
             @Param("roomId") Long roomId,
             @Param("userId") Long userId,
+            @Param("status") ReservationStatus status,
             Pageable pageable
     );
 }

@@ -67,6 +67,7 @@ public class ReservationService {
         List<ReservationEntity> allEntities = repository.searchAllByFilter(
                 filter.roomId(),
                 filter.userId(),
+                filter.status(),
                 pageable
         );
 

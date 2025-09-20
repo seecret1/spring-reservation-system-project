@@ -52,9 +52,7 @@ public class ReservationEntity {
         return userId;
     }
 
-    public Long getRoomId() {
-        return roomId;
-    }
+    public Long getRoomId() { return roomId; }
 
     public LocalDate getStartDate() {
         return startDate;

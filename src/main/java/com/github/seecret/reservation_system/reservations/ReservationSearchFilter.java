@@ -5,6 +5,8 @@ public record ReservationSearchFilter(
 
         Long userId,
 
+        ReservationStatus status,
+
         Integer pageSize,
 
         Integer pageNumber
