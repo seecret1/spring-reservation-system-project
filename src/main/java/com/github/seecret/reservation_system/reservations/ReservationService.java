@@ -3,18 +3,18 @@ package com.github.seecret.reservation_system.reservations;
 import com.github.seecret.reservation_system.reservations.availabittity.ReservationAvailabilityService;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
 
+@Slf4j
 @Service
+@RequiredArgsConstructor
 public class ReservationService {
-
-    private static final Logger log = LoggerFactory.getLogger(ReservationService.class);
 
     private final ReservationRepository repository;
 
@@ -22,23 +22,11 @@ public class ReservationService {
 
     private final ReservationAvailabilityService availabilityService;
 
-    private final int defPageSize;
+    @Value("${reservation.page-size}")
+    private int defPageSize;
 
-    private final int defPageNum;
-
-    public ReservationService(
-            ReservationRepository repository,
-            ReservationMapper mapper,
-            ReservationAvailabilityService availabilityService,
-            @Value("${reservation.page-size}") int defPageSize,
-            @Value("${reservation.page-number}") int defPageNum
-    ) {
-        this.repository = repository;
-        this.mapper = mapper;
-        this.availabilityService = availabilityService;
-        this.defPageSize = defPageSize;
-        this.defPageNum = defPageNum;
-    }
+    @Value("${reservation.page-number}")
+    private int defPageNum;
 
     public Reservation getReservationById(
             Long id
@@ -98,7 +86,6 @@ public class ReservationService {
     ) {
         var reservationEntity = repository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Not found reservation by id = " + id));
-
 
         if (reservationEntity.getStatus() != ReservationStatus.PENDING) {
             throw new IllegalStateException("Cannot modify reservation: status=" + reservationEntity.getStatus());
