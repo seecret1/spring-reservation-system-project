@@ -1,4 +1,4 @@
-package com.github.seecret.reservation_system.reservations;
+package com.github.seecret.reservationsystem.reservations;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

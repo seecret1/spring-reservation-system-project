@@ -1,4 +1,4 @@
-package com.github.seecret.reservation_system.reservations.availabittity;
+package com.github.seecret.reservationsystem.reservations.availabittity;
 
 public record CheckAvailabilityResponse(
         String message,

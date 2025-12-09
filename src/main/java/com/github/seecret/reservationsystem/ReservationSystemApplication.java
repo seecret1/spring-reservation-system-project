@@ -1,4 +1,4 @@
-package com.github.seecret.reservation_system;
+package com.github.seecret.reservationsystem;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

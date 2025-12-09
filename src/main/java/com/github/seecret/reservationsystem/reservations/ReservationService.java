@@ -1,6 +1,6 @@
-package com.github.seecret.reservation_system.reservations;
+package com.github.seecret.reservationsystem.reservations;
 
-import com.github.seecret.reservation_system.reservations.availabittity.ReservationAvailabilityService;
+import com.github.seecret.reservationsystem.reservations.availabittity.ReservationAvailabilityService;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;

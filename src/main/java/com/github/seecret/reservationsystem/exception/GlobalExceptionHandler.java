@@ -1,4 +1,4 @@
-package com.github.seecret.reservation_system.exception;
+package com.github.seecret.reservationsystem.exception;
 
 import jakarta.persistence.EntityNotFoundException;
 import lombok.extern.slf4j.Slf4j;

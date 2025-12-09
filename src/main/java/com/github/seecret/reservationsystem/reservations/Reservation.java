@@ -1,4 +1,4 @@
-package com.github.seecret.reservation_system.reservations;
+package com.github.seecret.reservationsystem.reservations;
 
 import jakarta.validation.constraints.FutureOrPresent;
 import jakarta.validation.constraints.NotNull;

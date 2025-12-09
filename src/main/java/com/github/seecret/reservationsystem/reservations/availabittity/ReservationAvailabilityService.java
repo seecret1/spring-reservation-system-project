@@ -1,7 +1,7 @@
-package com.github.seecret.reservation_system.reservations.availabittity;
+package com.github.seecret.reservationsystem.reservations.availabittity;
 
-import com.github.seecret.reservation_system.reservations.ReservationRepository;
-import com.github.seecret.reservation_system.reservations.ReservationStatus;
+import com.github.seecret.reservationsystem.reservations.ReservationRepository;
+import com.github.seecret.reservationsystem.reservations.ReservationStatus;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
