@@ -96,7 +96,7 @@ public class ReservationService {
         }
 
         var reservationToSave = mapper.toEntity(reservationToUpdate);
-        reservationToSave.setId(reservationEntity.getId());
+        reservationToSave.setId(id);
         reservationToSave.setStatus(ReservationStatus.PENDING);
 
         var updatedReservation = repository.save(reservationToSave);
